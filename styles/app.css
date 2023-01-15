@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/rossmin/fonts/Inter-Light.woff2?v=3.19') format('woff2'),
+    url('/rossmin/fonts/Inter-Light.woff?v=3.19') format('woff');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/rossmin/fonts/Inter-Regular.woff2?v=3.19') format('woff2'),
+    url('/rossmin/fonts/Inter-Regular.woff?v=3.19') format('woff');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/rossmin/fonts/Inter-Medium.woff2?v=3.19') format('woff2'),
+    url('/rossmin/fonts/Inter-Medium.woff?v=3.19') format('woff');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/rossmin/fonts/Inter-Bold.woff2?v=3.19') format('woff2'),
+    url('/rossmin/fonts/Inter-Bold.woff?v=3.19') format('woff');
+}
