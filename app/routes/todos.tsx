@@ -1,4 +1,4 @@
-import { Outlet, useTransition, useLoaderData } from '@remix-run/react';
+import { Outlet, useTransition, useSubmit, useLoaderData } from '@remix-run/react';
 import { json } from '@remix-run/node';
 import type { ActionArgs } from '@remix-run/node';
 
@@ -36,6 +36,10 @@ export const action = async ({ request }: ActionArgs) => {
   console.log('log', request.method);
 
   switch (_action) {
+    case 'update': {
+      console.log('_action is update');
+      return null;
+    }
     case 'delete': {
       console.log('_action is delete');
       const id = form.get('id');
@@ -60,7 +64,7 @@ export const action = async ({ request }: ActionArgs) => {
       return null;
     }
     case 'create': {
-      console.log('here');
+      console.log('action is create');
       const description = form.get('description');
 
       // we do this type check to be extra sure and to make TypeScript happy
@@ -87,6 +91,7 @@ export const action = async ({ request }: ActionArgs) => {
 export default function TodosRoute() {
   const data = useLoaderData<typeof loader>();
   const transition = useTransition();
+  const submit = useSubmit();
 
   console.log('transition', transition);
 
@@ -98,8 +103,15 @@ export default function TodosRoute() {
           {data.todos.map((todo) => (
             <li key={todo.id} className="flex justify-between">
               <div className="flex">
-                <form method="put" className="mr-2">
-                  <input type="checkbox" name="completed"></input>
+                <form method="post" className="mr-2">
+                  <input
+                    type="checkbox"
+                    name="isCompleted"
+                    onChange={(e) => {
+                      submit(e.currentTarget.form);
+                    }}
+                  ></input>
+                  <input type="hidden" name="_action" value="update"></input>
                 </form>
                 <div>{todo.description}</div>
               </div>
